@@ -11,7 +11,7 @@
     </locale-link>
   </div>
 </template>
-<script lang="ts" setup>
+<script lang="ts" scoped>
 const path = computed(() => useRoute().path)
-const { $t, locale } = useLocale(path)
+const { locale, $t } = useLocale(path)
 </script>

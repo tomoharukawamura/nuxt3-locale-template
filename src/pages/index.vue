@@ -8,9 +8,9 @@
         </p>
         <locale-link
             :locale="locale"
-            to="/pageA"
+            to="/page1"
         >
-            ページAへ
+            ページ1へ
         </locale-link>
     </div>
 </template>

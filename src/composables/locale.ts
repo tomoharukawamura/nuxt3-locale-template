@@ -1,14 +1,17 @@
+import { createLink } from '~/utils/createLink'
 import localeData from '../assets/locale/index.json'
 export const useLocale = (route: Ref<string>) => {
   const locale = useState<'ja' | 'en'>('locale', () => 'ja')
 
-  const isTopPage = computed(() => route.value === '/ja' || route.value === '/en')
+  const isTopPage = computed(() => route.value === '/' || route.value === '/en')
   const pageName = computed(() => isTopPage.value? 'index': route.value.split('/')[1])
-  const localeFromRoute = computed(() => 
-    isTopPage.value
-    ? route.value.split('/')[1] as 'ja' | 'en'
-    : route.value.split('/')[2] as 'ja' | 'en'
-  )
+  const localeFromRoute = computed<'en' | 'ja'>(() => {
+    if(route.value.endsWith('/en')){
+      return 'en'
+    } else {
+      return 'ja'
+    }
+  })
 
   if(process.server){
     locale.value = localeFromRoute.value
@@ -25,14 +28,12 @@ export const useLocale = (route: Ref<string>) => {
     } else {
       locale.value = 'ja'
     }
-    const to = isTopPage.value? `/${locale.value}`: `/${pageName.value}/${locale.value}`
+    const to = createLink(locale.value, `/${pageName.value}`)
     return navigateTo(to)
   }
 
   const pageContentData = computed(() => localeData[localeFromRoute.value][pageName.value])
-  const $t = (key: string) => {
-    return pageContentData.value[key as keyof typeof pageContentData.value]
-  }
+  const $t = (key: string) => pageContentData.value[key as keyof typeof pageContentData.value]
 
   return {
     locale,

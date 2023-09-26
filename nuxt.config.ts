@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { addRouteRules } from './scripts/dir'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
@@ -7,9 +8,10 @@ export default defineNuxtConfig({
     }
   },
   srcDir: 'src/',
-  imports: {
-    dirs:[
-      'composables/**.{ts,js}'
-    ]
+  hooks: {
+    'pages:extend'(pages){
+      addRouteRules(pages)
+      console.log(pages)
+    }
   }
 })
