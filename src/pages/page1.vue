@@ -4,10 +4,10 @@
         {{ $t('hello') }}
       </p>
       <locale-link
-        to="/index"
+        to="/page2"
         :locale="locale"
       >
-        トップに戻る
+        ページ2へ
       </locale-link>
     </div>
   </template>
