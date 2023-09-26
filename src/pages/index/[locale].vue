@@ -6,9 +6,6 @@
         <p>
             {{ locale }}
         </p>
-        <p @click="switchLocale">
-            きりかえ
-        </p>
         <locale-link
             :locale="locale"
             to="/pageA"
@@ -19,5 +16,5 @@
 </template>
 <script lang="ts" setup>
 const path = computed(() => useRoute().path)
-const { locale, switchLocale, $t } = useLocale(path)
+const { locale, $t } = useLocale(path)
 </script>
