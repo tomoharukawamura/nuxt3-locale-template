@@ -1,13 +1,14 @@
 import { createLink } from '~/utils/createLink'
 import localeData from '../assets/locale/index.json'
-export const useLocale = (route: Ref<string>) => {
+export const useLocale = () => {
+  const route = computed(() => useRoute().path)
   const isTopPage = computed(() => route.value === '/' || route.value === '/en')
   const pageName = computed(() => isTopPage.value? 'index': route.value.split('/')[1])
   const locale = computed<'en' | 'ja'>(() => route.value.endsWith('/en') ? 'en' : 'ja')
   
   const setLocale　= (l: 'ja' | 'en') => {
     if(l === locale.value) return
-    const to = createLink(l, `${pageName.value}`)
+    const to = createLink(l, `/${pageName.value}`)
     return navigateTo(to)
   }
 
@@ -24,6 +25,7 @@ export const useLocale = (route: Ref<string>) => {
   const $t = (key: string) => pageContentData.value[key as keyof typeof pageContentData.value]
 
   return {
+    route,
     pageName,
     locale,
     setLocale,

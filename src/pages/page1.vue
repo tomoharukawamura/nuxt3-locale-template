@@ -12,6 +12,5 @@
     </div>
   </template>
   <script lang="ts" setup>
-  const path = computed(() => useRoute().path)
-  const { $t, locale } = useLocale(path)
+  const { $t, locale } = useLocale()
   </script>
