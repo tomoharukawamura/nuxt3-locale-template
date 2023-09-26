@@ -13,8 +13,6 @@ export const useLocale = (route: Ref<string>) => {
   if(process.server){
     locale.value = localeFromRoute.value
   }
-
-  const pageContentData = computed(() => localeData[localeFromRoute.value][pageName.value])
   
   const setLocale　= (l: 'ja' | 'en') => {
     if(l === locale.value) return
@@ -31,6 +29,7 @@ export const useLocale = (route: Ref<string>) => {
     return navigateTo(to)
   }
 
+  const pageContentData = computed(() => localeData[localeFromRoute.value][pageName.value])
   const $t = (key: string) => {
     return pageContentData.value[key as keyof typeof pageContentData.value]
   }

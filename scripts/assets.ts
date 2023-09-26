@@ -11,7 +11,7 @@ const readLocaleAssets = (dirPath: string) => {
     }
 
     dirs.forEach(d => {
-      if(d === 'index.json') return
+      if(d.match(/(.ts|.js|.json)/)) return
       const enTmp = JSON.parse(fs.readFileSync(path.resolve(fileURLToPath(import.meta.url),`../../src/assets/locale/${d}/en.json`),'utf-8'))
       console.log(enTmp)
       enData[d as keyof typeof enData] = enTmp 
