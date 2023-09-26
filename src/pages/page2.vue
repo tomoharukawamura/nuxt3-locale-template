@@ -7,7 +7,7 @@
       to="/index"
       :locale="locale"
     >
-      トップに戻る
+      {{ $t('to-home') }}
     </locale-link>
   </div>
 </template>

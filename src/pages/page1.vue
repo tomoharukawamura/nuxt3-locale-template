@@ -7,7 +7,7 @@
         to="/page2"
         :locale="locale"
       >
-        ページ2へ
+        {{ $t('to-page2') }}
       </locale-link>
     </div>
   </template>

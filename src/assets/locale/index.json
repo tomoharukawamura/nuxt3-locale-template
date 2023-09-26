@@ -1,1 +1,1 @@
-{"ja":{"index":{"see-you":"さようなら","to-page1":"ページ1へ"},"page1":{"hello":"おはよう"},"page2":{"good-night":"おやすみ"}},"en":{"index":{"see-you":"see-you","to-page1":"to-page1"},"page1":{"hello":"hello"},"page2":{"good-night":"Good Night"}}}
+{"ja":{"index":{"see-you":"さようなら","to-page1":"ページ1へ"},"page1":{"hello":"おはよう","to-page2":"ページ２へ"},"page2":{"good-night":"おやすみ","to-home":"ホームへ戻る"}},"en":{"index":{"see-you":"see-you","to-page1":"to-page1"},"page1":{"hello":"hello","to-page2":"To page2"},"page2":{"good-night":"Good Night","to-home":"To home"}}}

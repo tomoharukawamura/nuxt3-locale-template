@@ -32,7 +32,10 @@ export const useLocale = (route: Ref<string>) => {
     return navigateTo(to)
   }
 
-  const pageContentData = computed(() => localeData[localeFromRoute.value][pageName.value])
+  const pageContentData = computed(() => {
+    const eachLocaleData = localeData[localeFromRoute.value]
+    return eachLocaleData[pageName.value as keyof typeof eachLocaleData]
+  })
   const $t = (key: string) => pageContentData.value[key as keyof typeof pageContentData.value]
 
   return {

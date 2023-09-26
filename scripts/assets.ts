@@ -12,12 +12,11 @@ const readLocaleAssets = (dirPath: string) => {
 
     dirs.forEach(d => {
       if(d.match(/(.ts|.js|.json)/)) return
+      
       const enTmp = JSON.parse(fs.readFileSync(path.resolve(fileURLToPath(import.meta.url),`../../src/assets/locale/${d}/en.json`),'utf-8'))
-      console.log(enTmp)
       enData[d as keyof typeof enData] = enTmp 
 
       const jaTmp = JSON.parse(fs.readFileSync(path.resolve(fileURLToPath(import.meta.url), `../../src/assets/locale/${d}/ja.json`),'utf-8'))
-      console.log(jaTmp)
       jaData[d as keyof typeof enData] = jaTmp
     })
 
@@ -25,7 +24,6 @@ const readLocaleAssets = (dirPath: string) => {
       ja: jaData,
       en: enData
     }
-    console.log(allLocaleData)
   
     const writeDir = path.resolve(fileURLToPath(import.meta.url), '../../src/assets/locale/index.json')
     const writeData = JSON.stringify(allLocaleData)
