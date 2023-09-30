@@ -23,8 +23,9 @@ const readLocaleAssets = (dirPath: string) => {
       jaData[d as keyof typeof enData] = jaTmp
       let jaKeys = Object.keys(jaTmp)
       
-      const enKeyLen = enKeys.length
+
       let idx = 0
+      let enKeyLen = enKeys.length
       while(idx < enKeyLen){
         const val = enKeys[idx]
         if(jaKeys.includes(val)){
@@ -35,6 +36,7 @@ const readLocaleAssets = (dirPath: string) => {
         } else {
           idx++
         }
+        enKeyLen = enKeys.length
       }
       if(jaKeys.length || enKeys.length){
         const dirName = `ディレクトリ:${d}\n`
