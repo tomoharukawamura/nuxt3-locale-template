@@ -11,7 +11,6 @@ export default defineNuxtConfig({
   hooks: {
     'pages:extend'(pages){
       addRouteRules(pages)
-      console.log(pages)
     }
   }
 })

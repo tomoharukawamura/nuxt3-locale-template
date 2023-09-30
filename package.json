@@ -4,10 +4,11 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "npx ts-node --esm scripts/assets.ts & nuxt dev",
+    "dev": "yarn generate:locale & nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "generate:locale": "npx ts-node --esm scripts/assets.ts"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
