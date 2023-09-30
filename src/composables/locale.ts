@@ -1,5 +1,6 @@
 import { createLink } from '~/utils/createLink'
 import localeData from '../assets/locale/index.json'
+
 export const useLocale = () => {
   const route = computed(() => useRoute().path)
   const isTopPage = computed(() => route.value === '/' || route.value === '/en')

@@ -1,10 +1,11 @@
-import fs from 'fs'
+import { readdirSync } from 'fs'
 import { NuxtPage } from 'nuxt/schema'
-import path from 'path'
+import { resolve } from 'path'
 import { fileURLToPath } from 'url'
-export const addRouteRules = (route: NuxtPage[]) => {
-  const pagesDir = path.resolve(fileURLToPath(import.meta.url), '../../src/pages')
-  const files = fs.readdirSync(pagesDir)
+
+export default function (route: NuxtPage[]) {
+  const pagesDir = resolve(fileURLToPath(import.meta.url), '../../src/pages')
+  const files = readdirSync(pagesDir)
   const vueFiles = files.filter(f => /(.+).vue/.test(f))
   vueFiles.forEach(v => {
     if(v !== 'index.vue'){
@@ -12,14 +13,14 @@ export const addRouteRules = (route: NuxtPage[]) => {
       route.push({
         name: `${name}-en`,
         path: `/${name}/en`,
-        file: path.resolve(fileURLToPath(import.meta.url), `../../src/pages/${v}`),
+        file: resolve(fileURLToPath(import.meta.url), `../../src/pages/${v}`),
         children: []
       })
     } else {
       route.push({
         name: 'index-en',
         path: '/en',
-        file: path.resolve(fileURLToPath(import.meta.url), `../../src/pages/${v}`),
+        file: resolve(fileURLToPath(import.meta.url), `../../src/pages/${v}`),
         children: []
       })
     }

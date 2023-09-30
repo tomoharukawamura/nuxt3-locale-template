@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { addRouteRules } from './scripts/dir'
+import addRouteRules from './scripts/dir'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {

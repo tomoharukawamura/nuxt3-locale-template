@@ -23,7 +23,6 @@ const readLocaleAssets = (dirPath: string) => {
       jaData[d as keyof typeof enData] = jaTmp
       let jaKeys = Object.keys(jaTmp)
       
-
       let idx = 0
       let enKeyLen = enKeys.length
       while(idx < enKeyLen){
